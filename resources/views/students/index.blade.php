@@ -249,7 +249,7 @@
             <button onclick="closeupdateModal()" id="closeForm" class="text-gray-600 text-lg">&times;</button>
         </div>
 
-        <form action="{{ route('students.update', $student->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('students.update', $student->id ?? 0) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
@@ -257,25 +257,25 @@
 
             <div class="mb-3">
                 <label for="name" class="block text-gray-700 font-bold mb-1">Name</label>
-                <input type="text" name="name" id="name" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500" value="{{ $student->name }}">
+                <input type="text" name="name" id="name" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500" value="{{ $student->name ?? "" }}">
                 <x-input-error :messages="$errors->get('name')" />
             </div>
 
             <div class="mb-3">
                 <label for="email" class="block text-gray-700 font-bold mb-1">Email</label>
-                <input type="email" name="email" id="email" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500" value="{{ $student->email }}">
+                <input type="email" name="email" id="email" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500" value="{{ $student->email ??""}}">
                 <x-input-error :messages="$errors->get('email')" />
             </div>
 
             <div class="mb-3">
                 <label for="phone" class="block text-gray-700 font-bold mb-1">Phone</label>
-                <input type="text" name="phone" id="phone" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500" value="{{ $student->phone }}">
+                <input type="text" name="phone" id="phone" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500" value="{{ $student->phone ??""}}">
                 <x-input-error :messages="$errors->get('phone')" />
             </div>
 
             <div class="mb-3">
                 <label for="address" class="block text-gray-700 font-bold mb-1">Address</label>
-                <textarea name="address" id="address" rows="2" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500">{{ $student->address }}</textarea>
+                <textarea name="address" id="address" rows="2" class="w-full px-2 py-1 border rounded-md text-sm focus:ring-indigo-500">{{ $student->address?? "" }}</textarea>
                 <x-input-error :messages="$errors->get('address')" />
             </div>
 
